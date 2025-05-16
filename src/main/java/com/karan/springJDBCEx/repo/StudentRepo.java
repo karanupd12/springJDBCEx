@@ -21,8 +21,8 @@ public class StudentRepo {
     }
 
     public void save(Student s) {
-        String sql = "INSERT INTO STUDENT (rollNo, name, marks) VALUES (?,?,?)";
-        int rows = jdbc.update(sql, s.getRollNo(), s.getName(), s.getMarks());
+        String sql = "INSERT INTO STUDENT (rollno, name, marks) VALUES (?,?,?)";
+        int rows = jdbc.update(sql, s.getRollno(), s.getName(), s.getMarks());
         System.out.println(rows + " rows affected");
     }
 
@@ -33,7 +33,7 @@ public class StudentRepo {
         //using Mapper functional interface to map the result set to Student object
         students = jdbc.query(sql, (rs, rowNum) -> {
             Student s = new Student();
-            s.setRollNo(rs.getInt("rollNo"));
+            s.setRollno(rs.getInt("rollno"));
             s.setName(rs.getString("name"));
             s.setMarks(rs.getInt("marks"));
             return s;

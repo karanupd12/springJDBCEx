@@ -1,5 +1,5 @@
 CREATE TABLE student(
-    rollNo INT PRIMARY KEY,
+    rollno INT PRIMARY KEY,
     name VARCHAR(50),
     marks INT
 );
