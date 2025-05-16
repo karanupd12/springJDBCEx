@@ -28,6 +28,17 @@ public class StudentRepo {
 
     public List<Student> findAll() {
         List<Student> students = new ArrayList<>();
+        String sql = "SELECT * FROM STUDENT";
+
+        //using Mapper functional interface to map the result set to Student object
+        students = jdbc.query(sql, (rs, rowNum) -> {
+            Student s = new Student();
+            s.setRollNo(rs.getInt("rollNo"));
+            s.setName(rs.getString("name"));
+            s.setMarks(rs.getInt("marks"));
+            return s;
+        });
+
         return students;
     }
 }
